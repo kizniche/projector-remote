@@ -20,6 +20,9 @@
 #
 #  Contact at kylegabriel.com
 
+#### Edit Loction of Config File ####
+config_file = "/home/user/config/remote.cfg"
+
 import ConfigParser
 import getopt
 from lockfile import LockFile
@@ -28,7 +31,6 @@ import sys
 import time
 import RPi.GPIO as GPIO
 
-config_file = "/home/kiz/config/remote.cfg"
 lock_directory = "/var/lock"
 write_lock_file = "%s/remote-write" % lock_directory
 run_lock_file = "%s/remote-run" % lock_directory
