@@ -20,7 +20,7 @@
 #
 #  Contact at kylegabriel.com
 
-#### Edit Loction of Config File ####
+#### Edit Location of Config File ####
 config_file = "/home/user/config/remote.cfg"
 
 import ConfigParser
