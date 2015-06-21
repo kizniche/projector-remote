@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-#  remote.py - Control a 3-button remote to raise and lower a projector screen
+#  remote.py - Control a 3-button RF remote to raise and lower a
+#              motorized projector screen
 #
 #  Copyright (C) 2015  Kyle T. Gabriel
 #
