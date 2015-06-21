@@ -8,6 +8,8 @@ Because all my GPIO pins were in use, one of the remote buttons had to be connec
 
 `@reboot /usr/local/bin/remote.py -i &`
 
+Download `remote.cfg` and edit `remote.py` to point to the correct location of the config file.
+
 ### Usage
 
 ```
