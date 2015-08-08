@@ -21,9 +21,6 @@
 #
 #  Contact at kylegabriel.com
 
-#### Edit Location of Config File ####
-config_file = "/home/user/config/remote.cfg"
-
 import ConfigParser
 import getopt
 from lockfile import LockFile
@@ -32,9 +29,13 @@ import sys
 import time
 import RPi.GPIO as GPIO
 
+from os.path import expanduser
+home = expanduser("~")
+
 lock_directory = "/var/lock"
 write_lock_file = "%s/remote-write" % lock_directory
 run_lock_file = "%s/remote-run" % lock_directory
+config_file = "%s/config/remote.cfg" % home
 
 projector_position = None
 
@@ -95,7 +96,7 @@ def write_config():
         with open(config_file, 'wb') as configfile:
             config.write(configfile)
     except:
-        print "Unable to write config: %s" % write_lock_file
+        print "Unable to write config: %s" % config_file
 
     lock.release()
 
@@ -148,7 +149,11 @@ except getopt.GetoptError as err:
 
 
 if not os.path.exists(lock_directory):
-    os.makedirs(lock_directory)        
+    os.makedirs(lock_directory)
+
+if not os.path.exists("%s/config" % home):
+    os.makedirs("%s/config" % home)
+
 lock = LockFile(run_lock_file)
 while not lock.i_am_locking():
     try:
