@@ -4,11 +4,16 @@ The sensing mechanism my motorized projector used to stop itself from rolling wh
 
 ### Setup
 
-Because all my GPIO pins were in use, one of the remote buttons had to be connected to a GPIO which is HIGH at boot. Only one of these normally-HIGH pins should be used, and it should be connected to the Stop button, as this is the button that will be activated before cron initializes and sets all pins LOW at system startup. The following line was added to crontab with `sudo crontab -e`:
+```
+cd $HOME
+git clone https://github.com/kizniche/projector-remote
+```
 
-`@reboot /usr/local/bin/remote.py -i &`
+Because all my GPIO pins were in use, one of the remote buttons had to be connected to a GPIO which is HIGH at boot. Only one of these normally-HIGH pins should be used, and it should be connected to the Stop button, as this is the button that will be activated before cron initializes and sets all pins LOW at system startup (essential step). The following line was added to crontab with `sudo crontab -e`:
 
-Download `remote.cfg` and edit `remote.py` to point to the correct location of the config file and the correct GPIO pins (BCM numbering) that are connected to the up, down, and stop buttons of your projector remote.
+`@reboot /home/user/projector-remote/remote.py -i &`
+
+Edit `remote.py` to point to the correct GPIO pins (BCM numbering) that are connected to the up, down, and stop buttons of your projector remote.
 
 ### Usage
 
